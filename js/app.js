@@ -2,59 +2,95 @@
 const alphabetLetters = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 const squareTiles = document.querySelectorAll('.tile');
 const buttons = document.querySelectorAll('.button');
-const submitButton = document.querySelector('.keyboard-submit-button')
-const resetButton = document.querySelector('.keyboard-reset-button')
+const submitButton = document.querySelector('submit')
+const resetButton = document.querySelector('#reset')
+const gameMessage = document.querySelector('#message')
 // const howToPlay =
 
 /*---------- Variables (state) ---------*/
-let currentGuess
-let allGuesses
+let currentGuess = [];
+let allGuesses = [];
+let userChoice = [];
+let correctSpot = [];
+let wrongPlacing = [];
+let wrongLetter = [];
+let correctWord = 'QUEST';
+let tile = 0
 let updateDisplay
-let userChoice 
-let correctSpot
-let wrongPlacing
-let wrongLetter
-let correctWord
-let hints
-let gameMessage 
+let answer
 
 /*----- Cached Element References  -----*/
 
 
 /*-------------- Functions -------------*/
 function initialize() {
- render();
+    currentGuess = [];
+    allGuesses = [];
+    userChoice = [];
+    correctSpot = [];
+    wrongPlacing = [];
+    wrongLetter = [];
+    correctWord = 'QUEST';
+    squareTiles[tile].textContent = ''; // not working but close to what I
+    tile = 0;
+    updateDisplay = null;
+    render();
+    console.log(tile)
 }
-  
-function render () {}
 
+function updateBoard(letter) {
+    if (currentGuess.length < 5) {
+        currentGuess.push(letter);
+        squareTiles[tile].textContent = letter;
+        tile = tile + 1
+    } else if (currentGuess.length === 5) {
+        answer = currentGuess.join('');
+        console.log(answer);
+        checkGuess(answer)
+    }
+}
 
-function updateBoard() {}
+function updateMessage() { }
 
-function updateMessage () {
-let correctWord = true
-let wrongLetter = true
-let wrongPlacing = true
+function checkGuess(answer) {
+    if (answer === correctWord) {
+        gameMessage.textContent = "Congratulations, you have the correct word!"
+    } else {
+        let includedLetter = [];
+        for (let i = 0; i < currentGuess.length; i++) {
+            if (correctWord[i] === currentGuess[i]) {
+                includedLetter.push('green');
+            } else if (correctWord.includes(currentGuess[i])) {
+                includedLetter.push('yellow');
+            } else {
+                includedLetter.push('red');
+            } 
+        }
+        currentGuess = [];
+        console.log(includedLetter)
+        return includedLetter;
+    }
 
-for (let i = 0; i < alphabetLetters.length; i++ )
+}
+
+function clickLetter(event) {
+    const letter = event.target.textContent;
+    updateBoard(letter);
+
+}
+
+function render() {
 }
 
 /*----------- Event Listeners ----------*/
 for (let i = 0; i < buttons.length; i++)
-buttons[i].addEventListener("click", 
-    function () {
-        console.log("Clicked Keyboard", buttons[i].id);
-    });
+    buttons[i].addEventListener("click",
+        clickLetter
+    );
 
-submitButton.addEventListener("click", 
-    function () {
-        console.log("Submit Score", submitButton.id);
-    });
+// submitButton.addEventListener("click", checkGuess);
 
-resetButton.addEventListener("click", 
-    function () {
-        console.log("Reset Board", resetButton.id);
-    });
+resetButton.addEventListener("click", initialize);
 
 initialize();
 render();
