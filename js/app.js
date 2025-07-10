@@ -14,6 +14,9 @@ let correctWord = 'QUEST';
 let tile = 0
 let updateDisplay
 let answer
+let tileIndex = [];
+let includedLetter = [];
+let count = 1
 
 /*----- Cached Element References  -----*/
 
@@ -23,9 +26,12 @@ function initialize() {
     currentGuess = [];
     allGuesses = [];
     correctWord = 'QUEST';
-    tile = 0;
+    tile
     updateDisplay = null;
-    render();
+    answer
+    tileIndex = [];
+    includedLetter = [];
+    count = 1
     console.log(tile)
 }
 
@@ -33,27 +39,42 @@ function updateBoard(letter) {
     if (currentGuess.length < 5) {
         currentGuess.push(letter);
         squareTiles[tile].textContent = letter;
+        tileIndex.push(tile)
         tile = tile + 1
+        console.log(tileIndex)
     }
 }
 
-
 function checkGuess() {
     if (currentGuess.join('') === correctWord) {
+        for (let i = 0; i < tileIndex.length; i++) {
+            squareTiles[tileIndex[i]].style.backgroundColor = 'green'
+        }
         gameMessage.textContent = "Congratulations, you have the correct word!"
     } else {
-        gameMessage.textContent = "Keep Trying!"
-        let includedLetter = [];
+        if (count >= 6 && currentGuess.join('') !== correctWord) {
+            gameMessage.textContent = "Sorry you lost!"
+        } else {
+            gameMessage.textContent = "Keep Trying!"
+        }
+        count++
         for (let i = 0; i < currentGuess.length; i++) {
             if (correctWord[i] === currentGuess[i]) {
-                squareTiles.style.backgrounColor = "green";
+
+                includedLetter.push('green');
             } else if (correctWord.includes(currentGuess[i])) {
                 includedLetter.push('yellow');
             } else {
                 includedLetter.push('red');
             }
         }
+        for (let i = 0; i < includedLetter.length; i++) {
+            squareTiles[tileIndex[i]].style.backgroundColor = includedLetter[i]
+        }
+
         currentGuess = [];
+        tileIndex = []
+        includedLetter = [];
         console.log(includedLetter)
         return includedLetter;
     }
@@ -61,11 +82,20 @@ function checkGuess() {
 
 function clickLetter(event) {
     const letter = event.target.textContent;
+    console.log(event.target)
     updateBoard(letter);
 }
 
-function render() {
-}
+// function reset() {
+//     for (let i = 0; i < tileIndex.length; i++) {
+//         console.log(squareTiles)
+//         squareTiles[tileIndex[i]].textContent = ''
+//     }
+//     tile = tileIndex[0]
+//     includedLetter = []
+//     tileIndex = []
+//     console.log(reset)
+// }
 
 /*----------- Event Listeners ----------*/
 for (let i = 0; i < buttons.length; i++)
@@ -73,10 +103,8 @@ for (let i = 0; i < buttons.length; i++)
         clickLetter
     );
 
-submitButton.addEventListener("click", checkGuess
-);
+submitButton.addEventListener("click", checkGuess);
 
 resetButton.addEventListener("click", initialize);
 
 initialize();
-render();
