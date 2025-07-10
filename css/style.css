@@ -1,15 +1,29 @@
+@media(min-width: 600px) {
+    .wordle-title {
+        font-size: 6rem;
+    }
+
+    .tile {
+        width: 80px;
+        height: 80px;
+    }
+}
+
 .londrina-shadow-regular {
     font-family: "Londrina Shadow", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-
 .quicksand {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+.Patrick-Hand {
+    font-family: "Patrick Hand", cursive;
 }
 
 body {
@@ -30,6 +44,48 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Quicksand", sans-serif;
+    gap: 8px;
+    ;
+}
+
+.wordle-instructions {
+    font-family: 'Londrina Shadow', cursive;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+.wordle-instructions .w {
+    color: red
+}
+
+.wordle-instructions .o {
+    color: orange
+}
+
+.wordle-instructions .r {
+    color: yellow
+}
+
+.wordle-instructions .d {
+    color: green
+}
+
+.wordle-instructions .l {
+    color: blue
+}
+
+.wordle-instructions .e {
+    color: purple
 }
 
 .wordle-title {
@@ -71,12 +127,12 @@ header {
 #results-display {}
 
 h2 {
-font-family: 'Quicksand', sans-serif;
-  font-size: 1.5rem;
-  text-align: center;
-  color: #4A148C;
-  margin-top: 20px;
-  background-color: #D0F0FD;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #4A148C;
+    margin-top: 5px;
+    background-color: #D0F0FD;
 }
 
 #game-board {
@@ -84,7 +140,8 @@ font-family: 'Quicksand', sans-serif;
     grid-template-rows: repeat(6, 60px);
     grid-template-columns: repeat(5, 60px);
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
+
 
 }
 
@@ -126,7 +183,7 @@ font-family: 'Quicksand', sans-serif;
 }
 
 button {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Patrick Hand", cursive;
     background-color: #82CFFD;
     border: 2px solid #4A90E2;
     border-radius: 10px;

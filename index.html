@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mathjs@14.5.3/lib/browser/math.min.js"></script>
     <script defer src="./js/app.js"></script>
     <title>Wordle</title>
@@ -25,6 +26,26 @@
         <h2 id="message"></h2>
     </header>
     <main>
+        <dialog id="game-instructions">
+            <div class="instructions">
+                <p>How To Play</p>
+                <div class="wordle-instructions">
+                    <span class="letter w">W</span>
+                    <span class="letter o">O</span>
+                    <span class="letter r">R</span>
+                    <span class="letter d">D</span>
+                    <span class="letter l">L</span>
+                    <span class="letter e">E</span>
+                </div>
+                <img src="assets/Y.png" alt="Green Rectangle" />
+                <p>a green box means the letter is in the correct spot.</p>
+                <img src="assets/E.png" alt="Yellow Rectangle" />
+                <p>a yellow box means a correct letter is in the wrong spot.</p>
+                <img src="assets/U.png" alt="Gray Rectangle" />
+                <p>a gray box means the letter in not in the word.</p>
+                <button id="playButton">play the game</button>
+            </div>
+        </dialog>
         <div id="game-board">
             <div class="tile"></div>
             <div class="tile"></div>

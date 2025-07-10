@@ -5,7 +5,9 @@ const buttons = document.querySelectorAll('.button');
 const submitButton = document.querySelector('#submit')
 const resetButton = document.querySelector('#reset')
 const backspaceButton = document.querySelector('#backspace')
+const playButton = document.querySelector('#playButton')
 const gameMessage = document.querySelector('#message')
+const howToPlay = document.querySelector('#game-instructions')
 const fiveLetterWords = [
     "CRANE", "BLINK", "SHOUT", "DRIVE", "STAMP", "PLANE", "CHORD", "TIGER", "WORST", "MIGHT",
     "CLOVE", "BRAND", "GLINT", "SWEAR", "CHIEF", "TRUNK", "JUMPY", "QUICK", "ZEBRA", "VIXEN",
@@ -19,8 +21,8 @@ const fiveLetterWords = [
     "DAIRY", "CAMPY", "VOTER", "PRISM", "GLUED", "TOKEN", "FLOOD", "RANGE", "CHEST", "LUCKY",
     "QUEST"
 ];
-// const howToPlay =
 
+console.log(howToPlay);
 /*---------- Variables (state) ---------*/
 let currentGuess = [];
 let allGuesses = [];
@@ -68,7 +70,7 @@ function checkGuess() {
         gameMessage.textContent = "Congratulations, you have the correct word!"
     } else {
         if (count >= 6 && currentGuess.join('') !== correctWord) {
-            gameMessage.textContent = "Sorry you lost!"
+            gameMessage.textContent = `Sorry you lost! The correct word is ${correctWord}`
         } else {
             gameMessage.textContent = "Keep Trying!"
         }
@@ -120,14 +122,28 @@ function backspace() {
     console.log(squareTiles)
 }
 
+function loadModal () {
+    howToPlay.showModal();
+}
+
+function closeInstructions () {
+    howToPlay.close();
+    initialize();
+}
+
 /*----------- Event Listeners ----------*/
 for (let i = 0; i < buttons.length; i++)
     buttons[i].addEventListener("click",
         clickLetter
     );
 
+document.addEventListener("DOMContentLoaded", loadModal);
+
+playButton.addEventListener("click", closeInstructions)
+
 submitButton.addEventListener("click", checkGuess);
 
 resetButton.addEventListener("click", reset);
 
 backspaceButton.addEventListener("click", backspace)
+
