@@ -2,7 +2,7 @@
 const alphabetLetters = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 const squareTiles = document.querySelectorAll('.tile');
 const buttons = document.querySelectorAll('.button');
-const submitButton = document.querySelector('submit')
+const submitButton = document.querySelector('#submit')
 const resetButton = document.querySelector('#reset')
 const gameMessage = document.querySelector('#message')
 // const howToPlay =
@@ -10,10 +10,6 @@ const gameMessage = document.querySelector('#message')
 /*---------- Variables (state) ---------*/
 let currentGuess = [];
 let allGuesses = [];
-let userChoice = [];
-let correctSpot = [];
-let wrongPlacing = [];
-let wrongLetter = [];
 let correctWord = 'QUEST';
 let tile = 0
 let updateDisplay
@@ -26,12 +22,7 @@ let answer
 function initialize() {
     currentGuess = [];
     allGuesses = [];
-    userChoice = [];
-    correctSpot = [];
-    wrongPlacing = [];
-    wrongLetter = [];
     correctWord = 'QUEST';
-    squareTiles[tile].textContent = ''; // not working but close to what I
     tile = 0;
     updateDisplay = null;
     render();
@@ -43,40 +34,34 @@ function updateBoard(letter) {
         currentGuess.push(letter);
         squareTiles[tile].textContent = letter;
         tile = tile + 1
-    } else if (currentGuess.length === 5) {
-        answer = currentGuess.join('');
-        console.log(answer);
-        checkGuess(answer)
     }
 }
 
-function updateMessage() { }
 
-function checkGuess(answer) {
-    if (answer === correctWord) {
+function checkGuess() {
+    if (currentGuess.join('') === correctWord) {
         gameMessage.textContent = "Congratulations, you have the correct word!"
     } else {
+        gameMessage.textContent = "Keep Trying!"
         let includedLetter = [];
         for (let i = 0; i < currentGuess.length; i++) {
             if (correctWord[i] === currentGuess[i]) {
-                includedLetter.push('green');
+                squareTiles.style.backgrounColor = "green";
             } else if (correctWord.includes(currentGuess[i])) {
                 includedLetter.push('yellow');
             } else {
                 includedLetter.push('red');
-            } 
+            }
         }
         currentGuess = [];
         console.log(includedLetter)
         return includedLetter;
     }
-
 }
 
 function clickLetter(event) {
     const letter = event.target.textContent;
     updateBoard(letter);
-
 }
 
 function render() {
@@ -88,7 +73,8 @@ for (let i = 0; i < buttons.length; i++)
         clickLetter
     );
 
-// submitButton.addEventListener("click", checkGuess);
+submitButton.addEventListener("click", checkGuess
+);
 
 resetButton.addEventListener("click", initialize);
 
