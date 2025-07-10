@@ -1,72 +1,153 @@
+.londrina-shadow-regular {
+    font-family: "Londrina Shadow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.quicksand {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
-background-color: white;
-display: flex;
-justify-content: center;
-flex-direction: column;
-height: 100%;
-margin: 0;
-padding: 0;
+    background-color: #D0F0FD;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-font-family: system-ui, sans-serif;
-color: pink;
-margin-top: 30px;
-display: flex;
-justify-content: center;
-align-items: center;
+    font-family: "Quicksand", sans-serif;
+    color: #82CFFD;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#results-display {
+.wordle-title {
+    font-family: 'Londrina Shadow', cursive;
+    font-size: 5rem;
+    text-align: center;
+    margin: 20px 0;
+}
 
+.wordle-title .letter {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.wordle-title .w {
+    color: red
+}
+
+.wordle-title .o {
+    color: orange
+}
+
+.wordle-title .r {
+    color: yellow
+}
+
+.wordle-title .d {
+    color: green
+}
+
+.wordle-title .l {
+    color: blue
+}
+
+.wordle-title .e {
+    color: purple
+}
+
+#results-display {}
+
+h2 {
+font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #4A148C;
+  margin-top: 20px;
+  background-color: #D0F0FD;
 }
 
 #game-board {
-display: grid;
-grid-template-rows: repeat(6, 60px);
-grid-template-columns: repeat(5, 60px);
-justify-content: center; 
-gap: 20px;
+    display: grid;
+    grid-template-rows: repeat(6, 60px);
+    grid-template-columns: repeat(5, 60px);
+    justify-content: center;
+    gap: 20px;
 
 }
 
 .tile {
-height: 70px;
-width: 70px;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-background-color: pink;
-border: 1px solid black;
+    background-color: #fff9c4;
+    border: 2px solid #fbc02d;
+    border-radius: 10px;
+    height: 70px;
+    width: 70px;
+    margin: 4px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 #game-keyboard {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 10px;
-max-width: 600px;
-margin: 30px auto 0 auto;
-border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+    border-radius: 12px;
 }
 
-.keyboard-row, .keyboard-row-two, .keyboard-row-three {
+.keyboard-row,
+.keyboard-row-two,
+.keyboard-row-three {
+    color: #4A148C;
     display: flex;
-    gap: 8px;
-    justify-content: space-around;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
 }
 
 button {
-background-color: pink;
-color: white;
-min-width: 40px;
-min-height: 50px;
+    font-family: "Quicksand", sans-serif;
+    background-color: #82CFFD;
+    border: 2px solid #4A90E2;
+    border-radius: 10px;
+    min-width: 45px;
+    min-height: 50px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.25s ease;
+}
 
+button:hover {
+    background-color: #9575cd;
 }
 
 .bottom-row {
     display: flex;
     flex-direction: row;
     margin: 20px;
-    gap: 1rem; 
+    gap: 1rem;
 }

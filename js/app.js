@@ -4,19 +4,34 @@ const squareTiles = document.querySelectorAll('.tile');
 const buttons = document.querySelectorAll('.button');
 const submitButton = document.querySelector('#submit')
 const resetButton = document.querySelector('#reset')
+const backspaceButton = document.querySelector('#backspace')
 const gameMessage = document.querySelector('#message')
+const fiveLetterWords = [
+    "CRANE", "BLINK", "SHOUT", "DRIVE", "STAMP", "PLANE", "CHORD", "TIGER", "WORST", "MIGHT",
+    "CLOVE", "BRAND", "GLINT", "SWEAR", "CHIEF", "TRUNK", "JUMPY", "QUICK", "ZEBRA", "VIXEN",
+    "ADORE", "WHELP", "FROST", "CHALK", "GLOVE", "HUMID", "DANCE", "SPLIT", "FABLE", "WORRY",
+    "MOUNT", "QUEST", "BLAZE", "VOUCH", "GRIND", "THROW", "JOKER", "PRONG", "VIRAL", "SCARE",
+    "BLAST", "FRONT", "CUBED", "KITES", "DRANK", "GLARE", "PUNCH", "MIRTH", "CROWN", "SLOPE",
+    "VAULT", "WHINE", "ZONED", "EXALT", "TRAIL", "GAMER", "FIGHT", "JUMPS", "SWORD", "NERVE",
+    "QUIET", "YIELD", "CARGO", "SPEND", "FLOAT", "DEALT", "PRINT", "SHOCK", "LOVED", "BANKS",
+    "TREND", "ZAPPY", "GHOST", "VAPID", "LUNCH", "WORMS", "REACT", "MONEY", "FIXED", "SQUAD",
+    "NOBLE", "DRYLY", "PLUSH", "CHINA", "TANGO", "WACKY", "MIXED", "BROWN", "JOLLY", "TWEAK",
+    "DAIRY", "CAMPY", "VOTER", "PRISM", "GLUED", "TOKEN", "FLOOD", "RANGE", "CHEST", "LUCKY",
+    "QUEST"
+];
 // const howToPlay =
 
 /*---------- Variables (state) ---------*/
 let currentGuess = [];
 let allGuesses = [];
-let correctWord = 'QUEST';
+let correctWord = fiveLetterWords[math.randomInt(fiveLetterWords.length)];
 let tile = 0
 let updateDisplay
 let answer
 let tileIndex = [];
 let includedLetter = [];
 let count = 1
+
 
 /*----- Cached Element References  -----*/
 
@@ -25,14 +40,14 @@ let count = 1
 function initialize() {
     currentGuess = [];
     allGuesses = [];
-    correctWord = 'QUEST';
-    tile
+    correctWord = fiveLetterWords[math.randomInt(fiveLetterWords.length)];
+    console.log('the correct word is ', correctWord);
+    tile = 0;
     updateDisplay = null;
     answer
     tileIndex = [];
     includedLetter = [];
     count = 1
-    console.log(tile)
 }
 
 function updateBoard(letter) {
@@ -65,37 +80,45 @@ function checkGuess() {
             } else if (correctWord.includes(currentGuess[i])) {
                 includedLetter.push('yellow');
             } else {
-                includedLetter.push('red');
+                includedLetter.push('gray');
             }
         }
         for (let i = 0; i < includedLetter.length; i++) {
             squareTiles[tileIndex[i]].style.backgroundColor = includedLetter[i]
+            console.log(squareTiles[tileIndex[i]])
         }
 
         currentGuess = [];
         tileIndex = []
         includedLetter = [];
-        console.log(includedLetter)
         return includedLetter;
     }
 }
 
 function clickLetter(event) {
     const letter = event.target.textContent;
-    console.log(event.target)
     updateBoard(letter);
 }
 
-// function reset() {
-//     for (let i = 0; i < tileIndex.length; i++) {
-//         console.log(squareTiles)
-//         squareTiles[tileIndex[i]].textContent = ''
-//     }
-//     tile = tileIndex[0]
-//     includedLetter = []
-//     tileIndex = []
-//     console.log(reset)
-// }
+function reset() {
+    console.log('this is working')
+    for (let i = 0; i < squareTiles.length; i++) {
+        squareTiles[i].innerText = ''
+        squareTiles[i].style.backgroundColor = 'pink'
+    }
+    initialize();
+}
+
+function backspace() {
+    console.log(currentGuess)
+    tile--
+    currentGuess.pop()
+    tileIndex.pop()
+    squareTiles[tile].textContent = ''
+    console.log(currentGuess)
+    console.log(includedLetter)
+    console.log(squareTiles)
+}
 
 /*----------- Event Listeners ----------*/
 for (let i = 0; i < buttons.length; i++)
@@ -105,6 +128,6 @@ for (let i = 0; i < buttons.length; i++)
 
 submitButton.addEventListener("click", checkGuess);
 
-resetButton.addEventListener("click", initialize);
+resetButton.addEventListener("click", reset);
 
-initialize();
+backspaceButton.addEventListener("click", backspace)

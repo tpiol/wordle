@@ -1,98 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@14.5.3/lib/browser/math.min.js"></script>
     <script defer src="./js/app.js"></script>
     <title>Wordle</title>
 </head>
+
 <body>
     <header>
-        <h1>WORDLE</h1>
-       <h2 id ="message">Message</h2>
+        <h1 class="wordle-title">
+            <span class="letter w">W</span>
+            <span class="letter o">O</span>
+            <span class="letter r">R</span>
+            <span class="letter d">D</span>
+            <span class="letter l">L</span>
+            <span class="letter e">E</span>
+        </h1>
+        <h2 id="message"></h2>
     </header>
     <main>
-        <div id ="game-board">
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+        <div id="game-board">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
 
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
 
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
 
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
 
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
 
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
         </div>
-        <div id= "game-keyboard">
-            
+        <div id="game-keyboard">
+
             <div class="keyboard-row">
-            <button class="button" id ="Q">Q</button>
-            <button class="button" id ="W">W</button>
-            <button class="button" id="E">E</button>
-            <button class="button" id="R">R</button>
-            <button class="button" id="T">T</button>
-            <button class="button" id="Y">Y</button>
-            <button class="button" id="U">U</button>
-            <button class="button" id="I">I</button>
-            <button class="button" id="O">O</button>
-            <button class="button" id="P">P</button>
+                <button class="button" id="Q">Q</button>
+                <button class="button" id="W">W</button>
+                <button class="button" id="E">E</button>
+                <button class="button" id="R">R</button>
+                <button class="button" id="T">T</button>
+                <button class="button" id="Y">Y</button>
+                <button class="button" id="U">U</button>
+                <button class="button" id="I">I</button>
+                <button class="button" id="O">O</button>
+                <button class="button" id="P">P</button>
             </div>
 
             <div class="keyboard-row-two">
-            <button class="button" id="A">A</button>
-            <button class="button" id="S">S</button>
-            <button class="button" id="D">D</button>
-            <button class="button" id="F">F</button>
-            <button class="button" id="G">G</button>
-            <button class="button" id="H">H</button>
-            <button class="button" id="J">J</button>
-            <button class="button" id="K">K</button>
-            <button class="button" id="L">L</button>
+                <button class="button" id="A">A</button>
+                <button class="button" id="S">S</button>
+                <button class="button" id="D">D</button>
+                <button class="button" id="F">F</button>
+                <button class="button" id="G">G</button>
+                <button class="button" id="H">H</button>
+                <button class="button" id="J">J</button>
+                <button class="button" id="K">K</button>
+                <button class="button" id="L">L</button>
             </div>
-        
-            <div class ="keyboard-row-three">
-            <button class="button" id="Z">Z</button>
-            <button class="button" id="X">X</button>
-            <button class="button" id="C">C</button>
-            <button class="button" id="V">V</button>
-            <button class="button" id="B">B</button>
-            <button class="button" id="N">N</button>
-            <button class="button" id="M">M</button>
-             </div>
 
-         <div class="bottom-row">
-        <button id="submit">submit</button>
-        <button id="reset">reset</button>
-        </div>
+            <div class="keyboard-row-three">
+                <button class="button" id="Z">Z</button>
+                <button class="button" id="X">X</button>
+                <button class="button" id="C">C</button>
+                <button class="button" id="V">V</button>
+                <button class="button" id="B">B</button>
+                <button class="button" id="N">N</button>
+                <button class="button" id="M">M</button>
+            </div>
+
+            <div class="bottom-row">
+                <button id="submit">submit</button>
+                <button id="backspace">backspace</button>
+                <button id="reset">reset</button>
+            </div>
 
         </div>
     </main>
 </body>
+
 </html>
