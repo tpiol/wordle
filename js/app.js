@@ -29,11 +29,9 @@ let allGuesses = [];
 let correctWord = fiveLetterWords[math.randomInt(fiveLetterWords.length)];
 let tile = 0
 let updateDisplay
-let answer
 let tileIndex = [];
 let includedLetter = [];
 let count = 1
-
 
 /*----- Cached Element References  -----*/
 
@@ -43,13 +41,12 @@ function initialize() {
     currentGuess = [];
     allGuesses = [];
     correctWord = fiveLetterWords[math.randomInt(fiveLetterWords.length)];
-    console.log('the correct word is ', correctWord);
     tile = 0;
     updateDisplay = null;
-    answer
     tileIndex = [];
     includedLetter = [];
     count = 1
+    
 }
 
 function updateBoard(letter) {
@@ -87,14 +84,16 @@ function checkGuess() {
         }
         for (let i = 0; i < includedLetter.length; i++) {
             squareTiles[tileIndex[i]].style.backgroundColor = includedLetter[i]
-            console.log(squareTiles[tileIndex[i]])
         }
 
+        usedLetters ();
         currentGuess = [];
         tileIndex = []
         includedLetter = [];
         return includedLetter;
+        
     }
+    
 }
 
 function clickLetter(event) {
@@ -106,10 +105,28 @@ function reset() {
     console.log('this is working')
     for (let i = 0; i < squareTiles.length; i++) {
         squareTiles[i].innerText = ''
-        squareTiles[i].style.backgroundColor = 'pink'
+        squareTiles[i].style.backgroundColor = '#fff9c4'
     }
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = '';
+    }
+    gameMessage.textContent = '';
     initialize();
 }
+
+function usedLetters() {
+    const grayLetters = [];
+    for (let i = 0; i < squareTiles.length; i++) {
+        if (squareTiles[i].style.backgroundColor === 'gray') {
+            grayLetters.push(squareTiles[i].textContent);
+        } 
+    } for (let i = 0; i < buttons.length; i++) {
+        if (grayLetters.includes(buttons[i].textContent)) {
+            buttons[i].style.backgroundColor = 'gray';
+        }
+    }
+}
+
 
 function backspace() {
     console.log(currentGuess)
@@ -117,16 +134,13 @@ function backspace() {
     currentGuess.pop()
     tileIndex.pop()
     squareTiles[tile].textContent = ''
-    console.log(currentGuess)
-    console.log(includedLetter)
-    console.log(squareTiles)
 }
 
-function loadModal () {
+function loadModal() {
     howToPlay.showModal();
 }
 
-function closeInstructions () {
+function closeInstructions() {
     howToPlay.close();
     initialize();
 }
