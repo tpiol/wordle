@@ -55,7 +55,6 @@ function updateBoard(letter) {
         squareTiles[tile].textContent = letter;
         tileIndex.push(tile)
         tile = tile + 1
-        console.log(tileIndex)
     }
 }
 
@@ -102,31 +101,42 @@ function clickLetter(event) {
 }
 
 function reset() {
-    console.log('this is working')
     for (let i = 0; i < squareTiles.length; i++) {
         squareTiles[i].innerText = ''
         squareTiles[i].style.backgroundColor = '#fff9c4'
     }
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].style.backgroundColor = '';
-    }
+    } 
     gameMessage.textContent = '';
     initialize();
 }
 
 function usedLetters() {
     const grayLetters = [];
+    const greenLetters = [];
+    const yellowLetters = [];
     for (let i = 0; i < squareTiles.length; i++) {
-        if (squareTiles[i].style.backgroundColor === 'gray') {
-            grayLetters.push(squareTiles[i].textContent);
-        } 
-    } for (let i = 0; i < buttons.length; i++) {
-        if (grayLetters.includes(buttons[i].textContent)) {
+        if (squareTiles[i].style.backgroundColor === 'green') {
+           greenLetters.push(squareTiles[i].textContent);
+        } else if (squareTiles[i].style.backgroundColor === 'yellow') {
+            yellowLetters.push(squareTiles[i].textContent);
+        } else {
+             grayLetters.push(squareTiles[i].textContent);
+        }
+    } 
+    for (let i = 0; i < buttons.length; i++) {
+        const letter = buttons[i].textContent
+        if (greenLetters.includes(letter)) {
+            buttons[i].style.backgroundColor = '#77dd77';
+        } else if (yellowLetters.includes(letter)) {
+            buttons[i].style.backgroundColor = '#f7dc6f';
+        } else if (grayLetters.includes(letter)){
             buttons[i].style.backgroundColor = 'gray';
         }
     }
+    
 }
-
 
 function backspace() {
     console.log(currentGuess)

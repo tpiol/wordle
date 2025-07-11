@@ -226,7 +226,7 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 600px) {
   .wordle-title {
-    font-size: 1.2rem;
+    font-size: 3em;
     text-align: center;
     margin: 0 auto 10px;
   }
