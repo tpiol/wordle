@@ -304,6 +304,8 @@ button:hover {
     }
 
     body {
+         background-image: none;
+        background-color: #D0F0FD;
         padding: 10px;
         overflow-x: hidden;
     }
