@@ -12,15 +12,20 @@
     font-style: normal;
 }
 
-.Patrick-Hand {
+/* .Patrick-Hand {
     font-family: "Patrick Hand", cursive;
-}
+} */
 
 /* Styling */
 
 body {
-    background-image: url("https://cdn.pixabay.com/photo/2023/06/15/18/29/dots-8066290_1280.png");
-    background-repeat: repeat;
+    background-image:
+        url("https://images.unsplash.com/vector-1744035321374-a3bd0eb41df3?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+        url("https://images.unsplash.com/vector-1744035321374-a3bd0eb41df3?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, right center;
+    background-size: 200px 100%, 200px 100%;
+    background-attachment: fixed;
     background-color: #D0F0FD;
     display: flex;
     justify-content: center;
@@ -40,8 +45,10 @@ header {
     align-items: center;
 }
 
+/* How To Play Styling */
+
 #game-instructions {
-    background-color: lightcyan;
+    background-color: #F8F7FF;
     border-radius: 12px;
     width: 90vw;
     max-width: 400px;
@@ -50,54 +57,68 @@ header {
     padding: 1rem;
 }
 
+.first-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Londrina Shadow', cursive;
+    font-size: 40px;
+    font-weight: 700;
+    color: #4B3B72;
+    vertical-align: middle;
+    text-align: center;
+    gap: 10px;
+}
+
+
+.wordle-instructions .w {
+    color: #F6C4D3;
+}
+
+.wordle-instructions .o {
+    color: #F3BDA1;
+}
+
+.wordle-instructions .r {
+    color: #F8E7A2;
+}
+
+.wordle-instructions .d {
+    color: #C4E4C2;
+}
+
+.wordle-instructions .l {
+    color: #A6D1E6;
+}
+
+.wordle-instructions .e {
+    color: #DCCCF4;
+}
+
+
 .instructions {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
     font-family: "Quicksand", sans-serif;
     font-size: 0.9rem;
-    gap: 3px;
+    font-weight: 700;
+    color: #4B3B72;
 
 }
 
-.wordle-instructions {
-    font-family: 'Londrina Shadow', cursive;
-    font-size: 45px;
-    text-align: center;
-    margin-bottom: 10px;
-
-}
-
-.wordle-instructions .w {
-    color: red
-}
-
-.wordle-instructions .o {
-    color: orange
-}
-
-.wordle-instructions .r {
-    color: yellow
-}
-
-.wordle-instructions .d {
-    color: green
-}
-
-.wordle-instructions .l {
-    color: blue
-}
-
-.wordle-instructions .e {
-    color: purple
-}
+/* Game Board Styling */
 
 .wordle-title {
     font-family: 'Londrina Shadow', cursive;
     font-size: 5rem;
     text-align: center;
     margin: 20px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+
 }
 
 .wordle-title .letter {
@@ -106,27 +127,27 @@ header {
 }
 
 .wordle-title .w {
-    color: red
+    color: #F6C4D3;
 }
 
 .wordle-title .o {
-    color: orange
+    color: #F3BDA1;
 }
 
 .wordle-title .r {
-    color: yellow
+    color: #F8E7A2;
 }
 
 .wordle-title .d {
-    color: green
+    color: #A6D1E6;
 }
 
 .wordle-title .l {
-    color: blue
+    color: #A6D1E6;
 }
 
 .wordle-title .e {
-    color: purple
+    color: #DCCCF4;
 }
 
 
@@ -158,8 +179,8 @@ h2 {
 }
 
 .tile {
-    background-color: #fff9c4;
-    border: 2px solid #fbc02d;
+    background-color: #FFFFFF;
+    border: 2px solid #DCCCF4;
     border-radius: 10px;
     height: 70px;
     width: 70px;
@@ -187,7 +208,7 @@ h2 {
 .keyboard-row,
 .keyboard-row-two,
 .keyboard-row-three {
-    color: #4A148C;
+    color: #333333;
     display: flex;
     gap: 5px;
     margin: 0;
@@ -196,8 +217,8 @@ h2 {
 }
 
 button {
-    font-family: "Patrick Hand", cursive;
-    background-color: lightseagreen;
+    font-family: "Quicksand", sans-serif;
+    background-color: #FFFFFF;
     border: 2px solid white;
     border-radius: 10px;
     min-width: 45px;
@@ -205,15 +226,18 @@ button {
     margin: 0;
     font-weight: 600;
     font-size: 1.1rem;
-    color: white;
+    color: #333333;
+    border: 2px solid #DCCCF4;
     cursor: pointer;
     user-select: none;
     transition: background-color 0.25s ease;
-    color: white
 }
 
 button:hover {
-    background-color: purple;
+    background-color: #E8DFFB;
+    border-color: #B39DDB;
+    color: #5D4A99;
+
 }
 
 .bottom-row {
@@ -225,62 +249,62 @@ button:hover {
 
 /* Responsive Design */
 @media (max-width: 600px) {
-  .wordle-title {
-    font-size: 3em;
-    text-align: center;
-    margin: 0 auto 10px;
-  }
+    .wordle-title {
+        font-size: 3em;
+        text-align: center;
+        margin: 0 auto 10px;
+    }
 
-  .tile {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-    margin: 0; 
-  }
+    .tile {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        margin: 0;
+    }
 
-  #game-board {
-    grid-template-rows: repeat(6, 50px);
-    grid-template-columns: repeat(5, 50px);
-    gap: 10px;
-  }
+    #game-board {
+        grid-template-rows: repeat(6, 50px);
+        grid-template-columns: repeat(5, 50px);
+        gap: 10px;
+    }
 
-  .keyboard-row,
-  .keyboard-row-two,
-  .keyboard-row-three {
-    gap: 5px;
-  }
+    .keyboard-row,
+    .keyboard-row-two,
+    .keyboard-row-three {
+        gap: 5px;
+    }
 
-  #game-keyboard {
-    max-width: 100%;
-    margin: 20px auto 0;
-    padding: 0 10px;
-  }
+    #game-keyboard {
+        max-width: 100%;
+        margin: 20px auto 0;
+        padding: 0 10px;
+    }
 
-  .button {
-    width: 30px;
-    height: 40px;
-    font-size: 0.9rem;
-    margin: 2px;
-    min-width: unset; 
-    min-height: unset;
-  }
+    .button {
+        width: 30px;
+        height: 40px;
+        font-size: 0.9rem;
+        margin: 2px;
+        min-width: unset;
+        min-height: unset;
+    }
 
-  .bottom-row {
-    margin: 10px;
-    gap: 0.5rem;
-  }
+    .bottom-row {
+        margin: 10px;
+        gap: 0.5rem;
+    }
 
-  #game-instructions {
-    width: 95vw;
-    max-width: 400px;
-    max-height: 80vh;
-    font-size: 0.9rem;
-    padding: 1rem;
-    overflow-y: auto;
-  }
+    #game-instructions {
+        width: 95vw;
+        max-width: 400px;
+        max-height: 80vh;
+        font-size: 0.9rem;
+        padding: 1rem;
+        overflow-y: auto;
+    }
 
-  body {
-    padding: 10px;
-    overflow-x: hidden;
-  }
+    body {
+        padding: 10px;
+        overflow-x: hidden;
+    }
 }
