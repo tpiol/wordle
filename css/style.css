@@ -296,11 +296,11 @@ button:hover {
 
     #game-instructions {
         width: 95vw;
-        max-width: 400px;
+        max-width: 350px;
         max-height: 80vh;
         font-size: 0.9rem;
-        padding: 1rem;
-        overflow-y: auto;
+        padding: 1rem 0.75rem;
+        border-radius: 8px;
     }
 
     body {
