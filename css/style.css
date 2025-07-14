@@ -367,6 +367,10 @@ button:hover {
         border-radius: 8px;
     }
 
+    .first-row {
+        font-size: 24px;
+    }
+
     body {
         background-image: none;
         background-color: #D0F0FD;
