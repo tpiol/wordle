@@ -38,5 +38,6 @@ I chose Wordle because many of my friends and family already enjoy this game. I 
 * Add a hints section to the game, the real Wordle game offers up to three hints.
 * Add sound effects for feedback (correct guess, wrong guess, invalid word, etc.)
 * Figure out how to flip each card one by one. 
+* Add a timer for more difficulty.
 
 
