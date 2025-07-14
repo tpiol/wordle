@@ -51,7 +51,7 @@ const validWords = [
     "TOUCH", "TOUGH", "TOWER", "TRACK", "TRADE", "TRAIN", "TREND", "TRICK", "TRIPY", "TRUCK",
     "TRUST", "TRUTH", "TWICE", "UNDER", "UNION", "UNITE", "UPPER", "USUAL", "VALUE", "VIDEO",
     "VISIT", "VOICE", "WATER", "WHEEL", "WHERE", "WHICH", "WHITE", "WHOLE", "WOMAN", "WORLD",
-    "WORTH", "YIELD", "YOUNG", "YOUTH", "SPARE", "GHOST", "CHAIR", "FENCE",
+    "WORTH", "YIELD", "YOUNG", "YOUTH", "SPARE", "GHOST", "CHAIR", "FENCE", "CREAM", "CLOWN", 
 ];
 
 console.log(howToPlay);
