@@ -54,7 +54,7 @@ const validWords = [
     "WORTH", "YIELD", "YOUNG", "YOUTH", "SPARE", "GHOST", "CHAIR", "FENCE", "CREAM", "CLOWN", 
 ];
 
-console.log(howToPlay);
+
 /*---------- Variables (state) ---------*/
 let currentGuess = [];
 let allGuesses = [];
