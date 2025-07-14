@@ -51,7 +51,7 @@ const validWords = [
     "TOUCH", "TOUGH", "TOWER", "TRACK", "TRADE", "TRAIN", "TREND", "TRICK", "TRIPY", "TRUCK",
     "TRUST", "TRUTH", "TWICE", "UNDER", "UNION", "UNITE", "UPPER", "USUAL", "VALUE", "VIDEO",
     "VISIT", "VOICE", "WATER", "WHEEL", "WHERE", "WHICH", "WHITE", "WHOLE", "WOMAN", "WORLD",
-    "WORTH", "YIELD", "YOUNG", "YOUTH", "SPARE", "GHOST", "CHAIR", 
+    "WORTH", "YIELD", "YOUNG", "YOUTH", "SPARE", "GHOST", "CHAIR", "FENCE",
 ];
 
 console.log(howToPlay);
@@ -78,6 +78,11 @@ function initialize() {
     tileIndex = [];
     includedLetter = [];
     count = 1
+   
+    for (let i = 0; i < squareTiles.length; i++) {
+        squareTiles[i].style.transform = ''
+        squareTiles[i].style.transition = ''
+    }
 
 }
 
@@ -109,7 +114,6 @@ function checkGuess() {
         count++
         for (let i = 0; i < currentGuess.length; i++) {
             if (correctWord[i] === currentGuess[i]) {
-
                 includedLetter.push('#C4E4C2');
             } else if (correctWord.includes(currentGuess[i])) {
                 includedLetter.push('#fff9c4');
@@ -119,6 +123,8 @@ function checkGuess() {
         }
         for (let i = 0; i < includedLetter.length; i++) {
             squareTiles[tileIndex[i]].style.backgroundColor = includedLetter[i]
+            squareTiles[tileIndex[i]].style.transform = "rotateY(360deg)"
+            squareTiles[tileIndex[i]].style.transition = 'transform 1s'
         }
 
         usedLetters();

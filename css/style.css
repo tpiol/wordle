@@ -110,6 +110,47 @@ header {
 
 }
 
+.instructions-wrapped {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+#start {
+    margin-bottom: 20px;
+}
+
+.green-letter,
+.yellow-letter,
+.coral-letter {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.green-letter img,
+.yellow-letter img,
+.coral-letter img {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    object-fit: contain;
+    display: block;
+}
+
+
+.green-letter p,
+.yellow-letter p,
+.coral-letter p {
+    margin: 0;
+    text-align: left;
+}
+
+#playButton {
+    display: block;
+    margin: 20px auto 0 auto;
+    margin-top: 30px;
+}
+
 /* Game Board Styling */
 
 .wordle-title {
@@ -255,6 +296,29 @@ button:hover {
         margin: 0 auto 10px;
     }
 
+    .green-letter,
+    .yellow-letter,
+    .coral-letter {
+        margin-bottom: 15px;
+        gap: 8px;
+    }
+
+    .green-letter img,
+    .yellow-letter img,
+    .coral-letter img {
+        width: 30px;
+        height: 30px;
+    }
+
+    
+    .green-letter p,
+    .yellow-letter p,
+    .coral-letter p,
+    .instructions {
+        font-size: 0.8rem;
+    }
+
+
     .tile {
         width: 50px;
         height: 50px;
@@ -298,13 +362,13 @@ button:hover {
         width: 95vw;
         max-width: 350px;
         max-height: 80vh;
-        font-size: 0.9rem;
+        font-size: 13px;
         padding: 1rem 0.75rem;
         border-radius: 8px;
     }
 
     body {
-         background-image: none;
+        background-image: none;
         background-color: #D0F0FD;
         padding: 10px;
         overflow-x: hidden;

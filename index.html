@@ -28,24 +28,30 @@
     <main>
         <dialog id="game-instructions">
             <div class="instructions">
-               <div class="first-row">
-               <p id="how-to-play">How To Play</p>
-                <div class="wordle-instructions">
-                    <span class="letter w">W</span>
-                    <span class="letter o">O</span>
-                    <span class="letter r">R</span>
-                    <span class="letter d">D</span>
-                    <span class="letter l">L</span>
-                    <span class="letter e">E</span>
+                <div class="first-row">
+                    <p id="how-to-play">How To Play</p>
+                    <div class="wordle-instructions">
+                        <span class="letter w">W</span>
+                        <span class="letter o">O</span>
+                        <span class="letter r">R</span>
+                        <span class="letter d">D</span>
+                        <span class="letter l">L</span>
+                        <span class="letter e">E</span>
+                    </div>
                 </div>
+                <div class="instructions-wrapped">
+                    <div id ="start">enter any 5-letter word to start guessing.</div>
+                    <div class="green-letter"><img src="assets/U.png" alt="Green Rectangle" />
+                        <p>green means the letter is in the correct spot.</p>
+                    </div>
+                    <div class="yellow-letter"><img src="assets/E.png" alt="Yellow Rectangle" />
+                        <p>yellow means a correct letter is in the wrong spot.</p>
+                    </div>
+                    <div class="coral-letter"><img src="assets/Q.png" alt="Coral Rectangle" />
+                        <p>coral means the letter is not in the word.</p>
+                    </div>
+                    <button id="playButton">play the game</button>
                 </div>
-                <img src="assets/U.png" alt="Green Rectangle" />
-                <p>green means the letter is in the correct spot.</p>
-                <img src="assets/E.png" alt="Yellow Rectangle" />
-                <p>yellow means a correct letter is in the wrong spot.</p>
-                <img src="assets/Q.png" alt="Gray Rectangle" />
-                <p>coral means the letter in not in the word.</p>
-                <button id="playButton">play the game</button>
             </div>
         </dialog>
         <div class="entire-game">
